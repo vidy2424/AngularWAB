@@ -1,0 +1,58 @@
+<div class="">
+    <app-navbar></app-navbar>
+</div>
+<div class="container-fluid">
+    <div class="text-center mt-3">
+        <button type="button" class="btn btn-primary text-center;" (click)="addWabServiceInfo()">Create</button>
+    </div>
+        <br>
+    
+        <ng-template #template>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{formName}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body col-12" style="max-height: 600px !important; overflow: auto">
+                <app-web-info [config]="configData"></app-web-info>
+            </div>
+            
+        </ng-template>
+    
+        <div class="row border border-primary">
+            <div class="col-4 border border-primary" *ngFor="let plan of serviceInfo; let index=index">
+                <div class="card" style="margin-top: 50px;  ">
+                     
+                    <div class="card-body ">
+                        <div class="border border-primary">
+                        <h2 class="card-title text-center" style="font-size: 30px;">{{plan.planName}}</h2>
+                        <div  style="padding-top: 0px;">
+                            <div class="">
+                                <h3 class="ml-2 text-center" style="font-size: 25px;">{{plan.websiteType}}</h3>
+                            </div>
+         
+                    </div>
+                        
+                    <div class="border border-primary">
+                        <h1 class="ml-2 mt-2 mb-2" style="font-size: 20px;">Note: {{plan.note}}</h1>
+                    </div>
+                        <div class="row">
+                            <div class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="editWabServiceInfo(plan)" class="btn btn-primary">Edit</a>
+                            </div>
+                            <div class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="deleteWabServiceInfo($event)" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <app-footer></app-footer>
+    </div>

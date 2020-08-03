@@ -1,0 +1,62 @@
+<div class="">
+    <app-navbar></app-navbar>
+</div>
+
+<div class="container-fluid border border-primary">
+    <div class="text-center mt-3">
+        <button type="button" class="btn btn-primary text-center;" (click)="addClientProducts()">Create</button>
+    </div>
+    <br>
+
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">{{formName}}</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body col-12" style="">
+            <div>
+                <formio #notificationForm [form]="formIo.form" [submission]="formIo.submission"
+                    [options]="formIoOptions" (change)="onSignUpFormChange($event)"
+                    (render)="onFormLoad(notificationForm)" (submit)="submitForm($event)"></formio>
+            </div>
+        </div>
+    </ng-template>
+
+    <div class="row border border-primary">
+        <div class="col-12 border border-primary" *ngFor="let plan of productInfo; let index=index">
+            <div class="card" style="margin-top: 50px;  ">
+
+                <div class="card-body ">
+                    <div class="border border-primary">
+                        <div class="row">
+                            <div class="col-6 border border-primary">
+                                <h2>Image</h2>
+                            </div>
+                            <div class="col-6 border border-primary">
+                                <h2 class="card-title text-center" style="font-size: 30px;">{{plan.client_product}}</h2>
+
+                                <h3 class="ml-2 text-center" style="font-size: 25px;">{{plan.client_product_info}}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="editClientProducts(plan)"
+                                    class="btn btn-primary">Edit</a>
+                            </div>
+                            <div class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="deleteClientProduct($event)"
+                                    class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <app-footer></app-footer>
+</div>

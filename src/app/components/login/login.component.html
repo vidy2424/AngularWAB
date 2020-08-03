@@ -1,0 +1,15 @@
+<div class="">
+    <app-navbar></app-navbar>
+</div>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-4 offset-md-4 mt-4">
+        <formio #notificationForm [form]="formIo.form" [submission]="formIo.submission"  [options]="formIoOptions" 
+        (change)="onLoginFormChange($event)" (render) = "onFormLoad(notificationForm)"  (submit)="submitForm($event)"
+        ></formio>
+    </div>
+</div>
+</div>
+<div class="">
+    <app-footer></app-footer>
+</div>

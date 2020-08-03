@@ -1,0 +1,193 @@
+<div class="container-fluid p-0">
+  <div class="d-none d-xl-block p-0">
+<nav class="no-gutters navbar navbar-expand-md navbar-dark" style="background-color: #087280;">
+  <a class="navbar-brand" href="#">WAB It Software Pvt.ltd</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mb-2" id="navbarsExample04">
+    <ul class="navbar-nav">
+      <li class="nav-item active" style="margin-left: 150px;">
+        <a routerLink="/" class="nav-link ml-2 mt-2 mr-2 fontsize" href="#">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item dropdown ml-4" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="dropdown04" ngbDropdownToggle>ACTIVE MEMBERS</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown04" ngbDropdownMenu>
+          <a routerLink="/Members" class="dropdown-item textwhite">All Members</a>
+          <a routerLink="/PremiumMembers" class="dropdown-item textwhite" href="#">Premium Members</a>
+          <a routerLink="/FreeMembers" class="dropdown-item textwhite" href="#">Free Members</a>
+        </div>
+      </li> -->
+
+      <li class="nav-item ml-2 mt-2 mr-2">
+        <a routerLink="/About" class="nav-link fontsize">ABOUT</a>
+      </li>
+      <li class="nav-item ml-2 mt-2">
+        <a routerLink="/services" class="nav-link fontsize">SERVICES</a>
+      </li>
+
+      <div class="dropdown ml-2 mr-2" style="margin-top:6px;">
+        <button class="dropbtn fontsize">PRODUCTS</button>
+        <div class="dropdown-content fontsize">
+          <a routerLink="/OurProducts">OUR PRODUCTS</a>
+          <a routerLink="/ClientProducts">CLIENT PRODUCTS</a>
+        </div>
+      </div>
+
+      <div class="dropdown ml-2 mr-2" style="margin-top:6px;">
+        <button class="dropbtn fontsize">COMPANIES</button>
+        <div class="dropdown-content fontsize">
+          <a href="#">WAB IT SOFTWARE</a>
+          <a href="#">WAB IT SOLUTIONS</a>
+          <a href="#">WAB IT BPO & ITO</a>
+          <a href="#">WAB IT DIGITAL MARKETING</a>
+          <a href="#">WAB IT DATA ENTRY BACK OFFICE</a>
+        </div>
+      </div>
+
+      <div class="dropdown ml-2 mr-2" style="margin-top:6px;">
+        <button class="dropbtn fontsize">CAREERS</button>
+        <div class="dropdown-content fontsize">
+          <a href="#">LIFE @WABIT</a>
+          <a routerLink="/CurrentOpenings">CURRENT OPENINGS</a>
+          <a href="#">MEET THE TEAM</a>
+        </div>
+      </div>
+ 
+      <!-- <li role="menuitem" class="border border-primary" dropdown triggers="mouseover" container="body">
+        <a dropdownToggle class="dropdown-item dropdown-toggle"
+           (click)="false">ACTIVE MEMBERS <span class="caret"></span></a>
+        <ul *dropdownMenu class="dropdown-menu border border-primary" role="menu">
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action1</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action2</a></li>
+        </ul>
+      </li> -->
+
+      <li class="nav-item ml-2 mt-2 mr-2">
+        <a routerLink="/Contact" class="nav-link fontsize">CONTACT</a>
+      </li>
+ 
+    </ul>
+   
+  
+  <!-- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf='!isLoggedin' class="nav-item  mt-2 pull-right">
+        <a routerLink="/login" class="nav-link fontsize">LOG IN</a>
+      </li>
+      <li *ngIf='!isLoggedin' class="nav-item  mt-2 pull-right">
+        <a routerLink="/Signup" class="nav-link fontsize">SIGN UP</a>
+      </li>
+    </ul>
+</div> -->
+ 
+<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+  <li *ngIf='!isLoggedin' class="nav-item  mt-2 pull-right">
+    <a routerLink="/login" class="nav-link fontsize">LOG IN</a>
+  </li>
+  <li *ngIf='!isLoggedin' class="nav-item  mt-2 pull-right">
+    <a routerLink="/Signup" class="nav-link fontsize">SIGN UP</a>
+  </li>
+  <li *ngIf='isLoggedin' class="nav-item pull-right butn">
+    <a href="javascript:void(0)" class="nav-link ml-auto fontsize" (click)="logOut()"><i class="fa fa-sign-out" 
+    style="font-size: 30px;" aria-hidden="tue"></i>
+     </a>
+  </li>
+
+</ul>
+ 
+     </div>
+</nav>
+</div>
+
+<!-- navbar for small screens -->
+
+<nav class="no-gutters navbar navbar-expand-md navbar-dark d-xl-none" style="background-color: #087280;">
+  <a class="navbar-brand ml-2 itemSize" href="#">WAB It Software Pvt.ltd</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mb-2" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" style="">
+        <a routerLink="/" class="nav-link ml-2 mt-2 mr-2 fontsize" href="#">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item dropdown ml-4" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="dropdown04" ngbDropdownToggle>ACTIVE MEMBERS</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown04" ngbDropdownMenu>
+          <a routerLink="/Members" class="dropdown-item textwhite">All Members</a>
+          <a routerLink="/PremiumMembers" class="dropdown-item textwhite" href="#">Premium Members</a>
+          <a routerLink="/FreeMembers" class="dropdown-item textwhite" href="#">Free Members</a>
+        </div>
+      </li> -->
+
+      <li class="nav-item mt-2 ml-2">
+        <a routerLink="/About" class="nav-link fontsize">ABOUT</a>
+      </li>
+      <li class="nav-item mt-2 ml-2">
+        <a routerLink="/services" class="nav-link fontsize">SERVICES</a>
+      </li>
+
+      <div class="dropdown">
+        <button class="dropbtn fontsize">PRODUCTS</button>
+        <div class="dropdown-content fontsize">
+          <a routerLink="/OurProducts">OUR PRODUCTS</a>
+          <a routerLink="/ClientProducts">CLIENT PRODUCTS</a>
+        </div>
+      </div>
+
+      <div class="dropdown ">
+        <button class="dropbtn fontsize">COMPANIES</button>
+        <div class="dropdown-content fontsize">
+          <a href="#">WAB IT SOFTWARE</a>
+          <a href="#">WAB IT SOLUTIONS</a>
+          <a href="#">WAB IT BPO & ITO</a>
+          <a href="#">WAB IT DIGITAL MARKETING</a>
+          <a href="#">WAB IT DATA ENTRY BACK OFFICE</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn fontsize">CAREERS</button>
+        <div class="dropdown-content fontsize">
+          <a href="#">LIFE @WABIT</a>
+          <a routerLink="/CurrentOpenings">CURRENT OPENINGS</a>
+          <a href="#">MEET THE TEAM</a>
+        </div>
+      </div>
+ 
+      <!-- <li role="menuitem" class="border border-primary" dropdown triggers="mouseover" container="body">
+        <a dropdownToggle class="dropdown-item dropdown-toggle"
+           (click)="false">ACTIVE MEMBERS <span class="caret"></span></a>
+        <ul *dropdownMenu class="dropdown-menu border border-primary" role="menu">
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action1</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested-dropdowns">Action2</a></li>
+        </ul>
+      </li> -->
+
+      <li class="nav-item mt-2 ml-2">
+        <a routerLink="/Contact" class="nav-link fontsize">CONTACT</a>
+      </li>
+      <li  *ngIf='!isLoggedin' class="nav-item mt-2 ml-2">
+        <a routerLink="/login" class="nav-link fontsize">LOG IN</a>
+      </li>
+      <li  *ngIf='isLoggedin' class="nav-item mt-2 ml-2">
+        <a href="javascript:void(0)" class="nav-link fontsize" (click)="logOut()">
+          <i class="fa fa-sign-out" style="font-size:30px ;" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li  *ngIf='!isLoggedin' class="nav-item mt-2 ml-2">
+        <a routerLink="/Signup" class="nav-link fontsize">SIGN UP</a>
+      </li>
+ 
+    </ul>
+  </div>
+</nav> 
+
+</div>
