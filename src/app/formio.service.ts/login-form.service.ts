@@ -91,7 +91,7 @@ export class LoginFormService {
     }
 
     userinfo(token) {
-        this.loginService.getuserInfo(token)
+        this.loginService.getuserInfo()
         .subscribe(result => {
             this.helperService.userData = result;
             this.router.navigate(['/']);

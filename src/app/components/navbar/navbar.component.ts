@@ -4,6 +4,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/sevices/login.service';
 import { HelperService } from 'src/app/Helper/helper.service';
+import { tokenName } from '@angular/compiler';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ import { HelperService } from 'src/app/Helper/helper.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  loginUserInfo = [];
 
   constructor(
     private helperService: HelperService,
@@ -22,6 +24,7 @@ export class NavbarComponent implements OnInit {
   isLoggedin: boolean;
   ngOnInit() {
     this.isLoggedin = this.helperService.token ? true : false;
+    this.userinfo(tokenName);
   }
 
   logOut(): void {
@@ -34,5 +37,15 @@ export class NavbarComponent implements OnInit {
         alert(err);
       });
   }
+
+  userinfo(token) {
+    this.loginService.getuserInfo()
+    .subscribe(result => {
+        this.helperService.userData = result;
+        this. loginUserInfo = result;
+    }, err => {
+        alert(err);
+    });
+}
 
 }

@@ -3,7 +3,7 @@ import { LoginService } from './sevices/login.service';
 import { FormioAppConfig, FormioModule } from 'angular-formio';
 import { LoginFormService } from './formio.service.ts/login-form.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
  import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,7 @@ import { AboutComponent } from './components/about/about.component';
 import { CurrentOpeningsComponent } from './components/current-openings/current-openings.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { initProviderFactory } from './sevices/init-app-provider.factory';
 
 @NgModule({
   declarations: [
@@ -71,15 +72,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionModule.forRoot(),
   ],
   providers: [WebService,
-    LoginService,
-    FormioAppConfig,
-    LoginFormService,
     HelperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    }
+    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initProviderFactory,
+    //   deps: [HelperService],
+    //   multi: true,
+    // },
+    LoginService,
+    FormioAppConfig,
+    LoginFormService,
   ],
   bootstrap: [AppComponent]
 })

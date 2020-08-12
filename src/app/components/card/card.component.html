@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="text-center mt-3">
+    <div *ngIf='isAdmin' class="text-center mt-3">
         <button type="button" class="btn btn-primary text-center;" (click)="addPlan()">Create</button>
     </div>
     <br>
@@ -20,39 +20,42 @@
         </div>
     </ng-template>
 
+    <!-- #28bdeb -->
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6  col-xl-4" *ngFor="let plan of planInfo; let index=index">
-            <div class="card small" style="margin-top: 50px; height:550px;">
+            <div class="card small" style="margin-top: 50px; height:550px; background-color: #03b5fc;">
                 <div class="card-body ">
                     <div class="">
-                        <h2 class="card-title text-center" style="font-size: 25px;">{{plan.planName}}</h2>
+                        <h2 class="card-title text-center mt-4" 
+                        style="font-size: 25px; color: white; margin-top: 20px;  height: 40px;">{{plan.planName}}</h2>
                         <div style="padding-top: 0px;">
                             <div class="">
-                                <h3 class="ml-2 text-center" style="font-size: 20px; margin-bottom: 40px; ">
+                                <h3 class="ml-2 text-center" style="font-size: 20px; margin-bottom: 40px; color:white ">
                                     {{plan.websiteType}}</h3>
                             </div>
                         </div>
 
- 
+                        <!-- #001c82 -->
                         <div class="" style="padding-top: 0px; overflow: auto; max-height:200px; ">
                             <div class="" *ngFor="let info of plan.info; let index=index">
-                                <h3 class="ml-2" style="font-size: 16px;"> # {{info.info}}</h3>
+                                <h3 class="ml-2" style="font-size: 16px; color: white;"> - {{info.info}}</h3>
                             </div>
 
                         </div>
                         <div class="" style="margin-top: 16px;">
-                            <h1 class="ml-2 mt-2 mb-2" style="font-size: 16px;">Note: {{plan.note}}</h1>
+                            <h1 class="ml-2 mt-2 mb-2" style="font-size: 16px; color: white;">Note: {{plan.note}}</h1>
                         </div>
                         <div class="row" style="margin-top: 50px;">
-                            <div class="col-6 mt-3 mb-3 text-center">
-                                <a href="javascript:void(0)" (click)="editPlan(plan)" class="btn btn-primary" style="width: 90px;">
+                            <div *ngIf='isAdmin'  class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="editPlan(plan)" class="btn btn-primary"
+                                    style="width: 90px;">
                                     Edit</a>
                             </div>
-                            <div class="col-6 mt-3 mb-3 text-center">
-                                <a href="javascript:void(0)" (click)="deletePlan(plan)"
-                                    class="btn btn-primary" style="width: 90px;" >Delete</a>
+                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="deletePlan(plan)" class="btn btn-primary"
+                                    style="width: 90px;">Delete</a>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -60,4 +63,5 @@
             </div>
         </div>
     </div>
+    <div class="row" style="height: 80px;"></div>
 </div>

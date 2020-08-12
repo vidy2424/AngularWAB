@@ -9,7 +9,9 @@ html, body { height: 100%; }
 body {
     
     /* font-family: 'my_custom_font', 'B612', sans-serif; */
-    font-family: 'my_custom_font', 'Titillium Web', sans-serif;
-    /* font-family: 'Rowdies', cursive; */
-    
+    /* font-family: 'my_custom_font','Rowdies-Bold', sans-serif; */
+
+
+    font-family: 'Titillium Web', sans-serif;
+   
 }

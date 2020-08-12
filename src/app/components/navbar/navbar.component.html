@@ -1,6 +1,6 @@
 <div class="container-fluid p-0">
   <div class="d-none d-xl-block p-0">
-<nav class="no-gutters navbar navbar-expand-md navbar-dark" style="background-color: #087280;">
+<nav class="no-gutters navbar navbar-expand-md navbar-dark" style="background-color: #2f15d4;">
   <a class="navbar-brand" href="#">WAB It Software Pvt.ltd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,12 +39,12 @@
       <div class="dropdown ml-2 mr-2" style="margin-top:6px;">
         <button class="dropbtn fontsize">COMPANIES</button>
         <div class="dropdown-content fontsize">
-          <a href="#">WAB IT SOFTWARE</a>
-          <a href="#">WAB IT SOLUTIONS</a>
-          <a href="#">WAB IT BPO & ITO</a>
-          <a href="#">WAB IT DIGITAL MARKETING</a>
-          <a href="#">WAB IT DATA ENTRY BACK OFFICE</a>
-        </div>
+          <a routerLink="/">WAB IT SOFTWARE</a>
+          <a routerLink="/">WAB IT SOLUTIONS</a>
+          <a routerLink="/">WAB IT BPO & ITO</a>
+          <a routerLink="/">WAB IT DIGITAL MARKETING</a>
+          <a routerLink="/">WAB IT DATA ENTRY BACK OFFICE</a>
+         </div>
       </div>
 
       <div class="dropdown ml-2 mr-2" style="margin-top:6px;">
@@ -66,7 +66,7 @@
         </ul>
       </li> -->
 
-      <li class="nav-item ml-2 mt-2 mr-2">
+      <li class="nav-item ml-2 mt-2 mr-2" >
         <a routerLink="/Contact" class="nav-link fontsize">CONTACT</a>
       </li>
  
@@ -91,21 +91,28 @@
   <li *ngIf='!isLoggedin' class="nav-item  mt-2 pull-right">
     <a routerLink="/Signup" class="nav-link fontsize">SIGN UP</a>
   </li>
-  <li *ngIf='isLoggedin' class="nav-item pull-right butn">
-    <a href="javascript:void(0)" class="nav-link ml-auto fontsize" (click)="logOut()"><i class="fa fa-sign-out" 
-    style="font-size: 30px;" aria-hidden="tue"></i>
-     </a>
-  </li>
-
 </ul>
- 
+  
+  <div *ngIf='isLoggedin' class="dropdown text-center mr-4">
+    <button class="btn btn-primary   dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{loginUserInfo.fullname}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li *ngIf='isLoggedin' class="nav-item text-center butn" >
+        <h1 style="font-size: 15px; color: white;">Welcome!!<br><br> {{loginUserInfo.fullname}}</h1>
+        <a href="javascript:void(0)" class="nav-link ml-auto fontsize" (click)="logOut()"><i class="fa fa-sign-out" 
+        style="font-size: 30px; color: white;" aria-hidden="tue"></i>
+         </a>
+      </li>
+    </div>
+  </div>
      </div>
 </nav>
 </div>
 
 <!-- navbar for small screens -->
 
-<nav class="no-gutters navbar navbar-expand-md navbar-dark d-xl-none" style="background-color: #087280;">
+<nav class="no-gutters navbar navbar-expand-lg navbar-dark d-xl-none" style="background-color: #2f15d4;">
   <a class="navbar-brand ml-2 itemSize" href="#">WAB It Software Pvt.ltd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -144,7 +151,7 @@
       <div class="dropdown ">
         <button class="dropbtn fontsize">COMPANIES</button>
         <div class="dropdown-content fontsize">
-          <a href="#">WAB IT SOFTWARE</a>
+          <a routerLink="/" class="nav-link fontsize">WAB IT SOFTWARE</a>
           <a href="#">WAB IT SOLUTIONS</a>
           <a href="#">WAB IT BPO & ITO</a>
           <a href="#">WAB IT DIGITAL MARKETING</a>

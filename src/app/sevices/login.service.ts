@@ -14,9 +14,10 @@ export class LoginService {
     tokenType = 'Bearer ';
     loginUser(data: Student): Observable<any> {
         const url = '/login';
-        let headers = new HttpHeaders();
-        headers = headers.set('Content-Type', 'application/text; charset=utf-8');
+        // let headers = new HttpHeaders();
+        // headers = headers.set('Content-Type', 'application/text; charset=utf-8');
 
+//        return this.httpClient.post(this.serverUrl + url, data);
 
         return this.httpClient.post(this.serverUrl + url, data, { responseType: 'text' as 'json' });
     }
@@ -24,13 +25,14 @@ export class LoginService {
     logoutUser(data: any): Observable<any> {
         localStorage.clear();
         const url = '/logout';
-        let headers = new HttpHeaders();
-        headers = headers.set('Content-Type', 'application/text; charset=utf-8');
+        //let headers = new HttpHeaders();
+        //headers = headers.set('Content-Type', 'application/text; charset=utf-8');
 
+     //   return this.httpClient.post(this.serverUrl + url, data);
         return this.httpClient.post(this.serverUrl + url, data, { responseType: 'text' as 'json' });
     }
 
-    getuserInfo(token): Observable<any> {
+    getuserInfo(): Observable<any> {
         const url = '/userinfo';
         // const header = new HttpHeaders()
         // .set('Authorization', token); // may be localStorage/sessionStorage

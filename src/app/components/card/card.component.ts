@@ -1,11 +1,14 @@
- import { Component, OnInit, TemplateRef, ViewChild, Input } from '@angular/core';
- import * as _ from 'lodash';
+import { Component, OnInit, TemplateRef, ViewChild, Input } from '@angular/core';
+import * as _ from 'lodash';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormConfig } from 'src/interface/formio-config';
 import { Student } from 'src/app/interface/student.interface';
 import { LoginService } from 'src/app/sevices/login.service';
 import { WebInfoService } from 'src/app/formio.service.ts/web-info.service';
- @Component({
+import { HelperService } from 'src/app/Helper/helper.service';
+import { tokenName } from '@angular/compiler';
+import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
+@Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
@@ -30,10 +33,12 @@ export class CardComponent implements OnInit {
   planInfo = [];
   configData = {};
   formName = 'Create Plan';
+  isAdmin = false;
   constructor(
     private loginService: LoginService,
     private webInfoService: WebInfoService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private helperService: HelperService,
   ) { }
 
   formIoOptions = {
@@ -51,8 +56,13 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isAdmin = this.helperService.userData['role'] === 'ADMIN' ? true : false;
+    // this.isAdmin = this.userinfo['role'] === 'ADMIN' ? true : false;
     this.getPlanInfo();
+    this.userinfo(tokenName);
   }
+
+
 
   getPlanInfo(): void {
     this.loginService.getWebPlanInfo()
@@ -63,6 +73,19 @@ export class CardComponent implements OnInit {
         alert(err);
       });
   }
+ 
+
+  userinfo(token) {
+    this.loginService.getuserInfo()
+      .subscribe(result => {
+        this.helperService.userData = result;
+        this.isAdmin = result['role'] === 'ADMIN' ? true : false;
+
+      }, err => {
+        alert(err);
+      });
+  }
+  
 
 
   openModalWithClass(template: TemplateRef<any>, item?: any) {
