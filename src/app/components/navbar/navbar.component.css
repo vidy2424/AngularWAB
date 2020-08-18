@@ -4,7 +4,7 @@ img{
 }
 
 .dropdown-menu{
-background-color: #2f15d4;
+background-color: #046ebf;
 }
 
 .dropdown-menu{
@@ -14,17 +14,24 @@ background-color: #2f15d4;
 }
 
 .dropdown-toggle{ 
-  background-color: #03448f;
+  background-color: #046ebf;
 }
 
 .dropdown-toggle > .active { color: aqua;}
 
-.dropdown-toggle:hover {background-color: #186ac9;}
+.dropdown-toggle:hover {background-color: #046ebf;}
 
 .dropdown-menu > .active > a,.dropdown-menu > .active > a:hover.dropdown-menu > .active > a:focus {color: white!important; background-color: #e7e7e7!important;}
  
 .dropdown-item{
-    background-color: #2f15d4;
+    background-color: #046ebf;
+}
+
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
 }
 
 .textwhite{
@@ -35,7 +42,7 @@ background-color: #2f15d4;
   
 /* Dropdown Button */
 .dropbtn {
-    background-color: #2f15d4;
+    background-color: #046ebf;
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -57,7 +64,7 @@ background-color: #2f15d4;
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color:#2f15d4;
+    background-color:#046ebf;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -72,13 +79,13 @@ background-color: #2f15d4;
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color:#2f15d4;}
+  .dropdown-content a:hover {background-color:#046ebf;}
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block;}
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn{background-color:#2f15d4;}
+  .dropdown:hover .dropbtn{background-color:#046ebf;}
 
 
    /* Medium devices (tablets, 768px and up) */

@@ -13,6 +13,8 @@ import { AboutComponent } from './components/about/about.component';
 import { CurrentOpeningsComponent } from './components/current-openings/current-openings.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
+import { OurNewProdutsComponent } from './components/our-new-produts/our-new-produts.component';
+import { MeetTheTeamComponent } from './components/meet-the-team/meet-the-team.component';
 
 
 const routes: Routes = [
@@ -27,8 +29,9 @@ const routes: Routes = [
   { path: 'ClientProducts', component: ClientProductsComponent },
   { path: 'About', component: AboutComponent },
   { path: 'CurrentOpenings', component: CurrentOpeningsComponent },
-  { path: 'Contact', component: ContactComponent }
-
+  { path: 'Contact', component: ContactComponent },
+  { path: 'OurNewProducts', component: OurNewProdutsComponent },
+  { path: 'MeetTheTeam', component: MeetTheTeamComponent }
 ];
 
 @NgModule({

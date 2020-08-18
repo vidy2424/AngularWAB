@@ -34,7 +34,10 @@ import { AboutComponent } from './components/about/about.component';
 import { CurrentOpeningsComponent } from './components/current-openings/current-openings.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { initProviderFactory } from './sevices/init-app-provider.factory';
+ import { OurNewProdutsComponent } from './components/our-new-produts/our-new-produts.component';
+import { MeetTheTeamComponent } from './components/meet-the-team/meet-the-team.component';
+import { IsoInfoComponent } from './components/iso-info/iso-info.component';
+ // import { initProviderFactory } from './sevices/init-app-provider.factory';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClientProductsComponent,
     AboutComponent,
     CurrentOpeningsComponent,
-    ContactComponent
+    ContactComponent,
+    OurNewProdutsComponent,
+    MeetTheTeamComponent,
+    IsoInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
-import { Student } from './../interface/student.interface';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { Student } from '../interface/student.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class OurProductsServiceService {
+export class MeetTheTeamService {
 
     constructor(private httpClient: HttpClient) { }
 
@@ -24,7 +24,8 @@ export class OurProductsServiceService {
     }
 
     
-    editOurProducts(data,file, id:any): Observable<HttpEvent<any>> {
+    editTeamMembers(data,file, id:any): Observable<HttpEvent<any>> {
+        
         const formData: FormData = new FormData();
         const formSubmissiomData = {
             
@@ -32,7 +33,7 @@ export class OurProductsServiceService {
         formData.append('data', JSON.stringify(data));
         formData.append('file', file);
 
-        const req = new HttpRequest('POST', `${this.serverUrl}/product`, formData, {
+        const req = new HttpRequest('POST', `${this.serverUrl}/team`, formData, {
          //   headers: headers.set('Content-Type', 'multipart/form-data'),
             // reportProgress: true,
             //  responseType: 'json'
@@ -42,12 +43,12 @@ export class OurProductsServiceService {
     }
 
 
-    getOurProducts(): Observable<any> {
-        const url = '/ourProducts/info';
+    getTeamMembers(): Observable<any> {
+        const url = '/teamMembers/info';
         return this.httpClient.get(this.serverUrl + url);
     }
-    deleteOurProducts(id: any): Observable<any> {
-        const url = `/infoDeleteprod/${id}`;
+    deleteTeamMembers(id: any): Observable<any> {
+        const url = `/DeleteteamMember/${id}`;
        
         return this.httpClient.delete(this.serverUrl + url, { responseType: 'text' as 'json' });
         //return this.httpClient.delete(this.serverUrl + url);
@@ -63,7 +64,7 @@ export class OurProductsServiceService {
         formData.append('data', JSON.stringify(data.data));
         formData.append('file', data.files);
 
-        const req = new HttpRequest('POST', `${this.serverUrl}/product`, formData, {
+        const req = new HttpRequest('POST', `${this.serverUrl}/team`, formData, {
          //   headers: headers.set('Content-Type', 'multipart/form-data'),
             // reportProgress: true,
             //  responseType: 'json'

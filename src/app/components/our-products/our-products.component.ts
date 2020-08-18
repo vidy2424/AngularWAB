@@ -9,6 +9,7 @@ import { OurProductsServiceService } from 'src/app/sevices/our-products-service.
 import { Observable } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { HelperService } from 'src/app/Helper/helper.service';
 
 @Component({
     selector: 'app-our-products',
@@ -44,7 +45,8 @@ export class OurProductsComponent implements OnInit {
         private ourProductsService: OurProductsService,
         private ourProductsServiceService: OurProductsServiceService,
         private modalService: BsModalService,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private helperService: HelperService
     ) { }
 
     formIoOptions = {
@@ -122,14 +124,14 @@ export class OurProductsComponent implements OnInit {
           });
       }
 
-    editOurProducts(item: any): void {
-        this.configData = {
-            formName: this.formName,
-            selectedItem: item
-        };
-        this.openModalWithClass(this._template, item);
-        this.formName = `Edit Plan: ${item.planName}`;
-    }
+    // editOurProducts(item: any): void {
+    //     this.configData = {
+    //         formName: this.formName,
+    //         selectedItem: item
+    //     };
+    //     this.openModalWithClass(this._template, item);
+    //     this.formName = `Edit Plan: ${item.planName}`;
+    // }
 
     addOurProducts(): void {
         this.configData = {

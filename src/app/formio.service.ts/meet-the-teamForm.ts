@@ -1,10 +1,10 @@
-import { OurProductsServiceService } from './../sevices/our-products-service.service';
+import { OurProductsServiceService } from '../sevices/our-products-service.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OurProductsService {
+export class MeetTheTeamForm {
   data = {};
   constructor(
     private ourProductsServiceService: OurProductsServiceService,
@@ -17,14 +17,14 @@ export class OurProductsService {
         {
             label: 'Text Field',
             tableView: true,
-            key: 'product_name',
+            key: 'member_name',
             type: 'textfield',
             input: true
         },
         {
           label: 'Text Field',
           tableView: true,
-          key: 'product_info',
+          key: 'profile_name',
           type: 'textfield',
           input: true
         },

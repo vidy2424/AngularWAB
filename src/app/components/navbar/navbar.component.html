@@ -1,6 +1,8 @@
 <div class="container-fluid p-0">
+   <div class="container-fluid p-0">
+  
   <div class="d-none d-xl-block p-0">
-<nav class="no-gutters navbar navbar-expand-md navbar-dark" style="background-color: #2f15d4;">
+<nav class="no-gutters navbar navbar-expand-lg navbar-dark" style="background-color: #046ebf;">
   <a class="navbar-brand" href="#">WAB It Software Pvt.ltd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +54,7 @@
         <div class="dropdown-content fontsize">
           <a href="#">LIFE @WABIT</a>
           <a routerLink="/CurrentOpenings">CURRENT OPENINGS</a>
-          <a href="#">MEET THE TEAM</a>
+          <a routerLink="/MeetTheTeam">MEET THE TEAM</a>
         </div>
       </div>
  
@@ -93,11 +95,11 @@
   </li>
 </ul>
   
-  <div *ngIf='isLoggedin' class="dropdown text-center mr-4">
+  <div *ngIf='isLoggedin' class="dropdown text-center" style="margin-right: 60px;">
     <button class="btn btn-primary   dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{loginUserInfo.fullname}}
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuButton">
       <li *ngIf='isLoggedin' class="nav-item text-center butn" >
         <h1 style="font-size: 15px; color: white;">Welcome!!<br><br> {{loginUserInfo.fullname}}</h1>
         <a href="javascript:void(0)" class="nav-link ml-auto fontsize" (click)="logOut()"><i class="fa fa-sign-out" 
@@ -111,8 +113,26 @@
 </div>
 
 <!-- navbar for small screens -->
-
-<nav class="no-gutters navbar navbar-expand-lg navbar-dark d-xl-none" style="background-color: #2f15d4;">
+</div>
+<div class="container-fluid no-gutters p-0 "style="background-color: #0790cf;">
+   <div class=" d-md-none p-0 border border-primary">
+  <div class="col-12 text-center"><p style="font-size: 13px; color: white;">CIN No:- U72200MH2017PTC291996   
+ </p></div>
+ <div class="col-12 text-center"><p style="font-size: 13px; color: white; ">ISO 9001:2015 Certificate   
+ </p></div>
+ <div class="col-12 text-center"><p style="font-size: 13px; color:white;">
+  <i class="fa fa-phone mr-1" aria-hidden="true"></i>+91 7040010693  
+ </p></div>
+ <div class="col-12 text-center"><p style="font-size: 13px; color: white;">  
+   <i class="fa fa-envelope-o ml-2 mr-1" aria-hidden="true"></i>hr@wabitsolution.com, info@wabitsolution.com 
+   
+ </p></div>
+  <div class="col-12 text-center"><p style="font-size: 13px; color: white;">
+  <i class="fa fa-clock-o ml-4 mr-1" aria-hidden="true"></i>Mon - Sat 9:30 to 6:30   
+</p></div>   
+ </div>
+<div class=" p-0 d-xl-none">
+<nav class="no-gutters navbar navbar-expand-lg navbar-dark " style="background-color: #046ebf;">
   <a class="navbar-brand ml-2 itemSize" href="#">WAB It Software Pvt.ltd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -164,7 +184,7 @@
         <div class="dropdown-content fontsize">
           <a href="#">LIFE @WABIT</a>
           <a routerLink="/CurrentOpenings">CURRENT OPENINGS</a>
-          <a href="#">MEET THE TEAM</a>
+          <a routerLink="/MeetTheTeam">MEET THE TEAM</a>
         </div>
       </div>
  
@@ -196,5 +216,6 @@
     </ul>
   </div>
 </nav> 
-
+</div>
+</div>
 </div>
