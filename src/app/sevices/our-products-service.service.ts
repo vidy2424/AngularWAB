@@ -17,14 +17,7 @@ export class OurProductsServiceService {
         const url = '/ourProducts';
         return this.httpClient.post(this.serverUrl + url, data);
     }
-
-    editOurProducts1(data: Student, id: any): Observable<any> {
-        const url = `/ourProducts/${id}`;
-        return this.httpClient.put(this.serverUrl + url, data);
-    }
-
-    
-    editOurProducts(data,file, id:any): Observable<HttpEvent<any>> {
+     editOurProducts(data,file, id:any): Observable<HttpEvent<any>> {
         const formData: FormData = new FormData();
         const formSubmissiomData = {
             
@@ -71,8 +64,5 @@ export class OurProductsServiceService {
 
         return this.httpClient.request(req);
     }
-  
-    getFiles(): Observable<any> {
-        return this.httpClient.get(`${this.serverUrl}/files`);
-    }
+ 
 }

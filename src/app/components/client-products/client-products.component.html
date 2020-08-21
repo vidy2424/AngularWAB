@@ -5,7 +5,7 @@
     <app-navbar></app-navbar>
 </div>
 
-<div class="container-fluid border border-primary">
+<div class="container-fluid ">
     <div class="text-center mt-3">
         <button type="button" class="btn btn-primary text-center;" (click)="addClientProducts()">Create</button>
     </div>
@@ -22,25 +22,43 @@
             <div>
                 <formio #notificationForm [form]="formIo.form" [submission]="formIo.submission"
                     [options]="formIoOptions" (change)="onSignUpFormChange($event)"
-                    (render)="onFormLoad(notificationForm)" (submit)="submitForm($event)"></formio>
+                    (render)="onFormLoad(notificationForm)" (submit)="submitForm($event)">
+                </formio>
+                <label class="btn btn-default">
+                    <input type="file" (change)="selectFile($event)" />
+                </label>
             </div>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">close</button>
+            <button type="button" class="btn btn-secondary"  (click)="upload()"
+            data-dismiss="modal">Submit</button>
+          </div>
+          <!-- [disabled]="!submissionData" -->
     </ng-template>
 
-    <div class="row border border-primary">
-        <div class="col-12 border border-primary" *ngFor="let plan of productInfo; let index=index">
+    <div class="row  " *ngFor="let plan of productInfo; let index=index">
+
+        <div class="col-xl-1 "></div>
+        <div class="col-xl-10 " >
             <div class="card" style="margin-top: 50px;  ">
 
                 <div class="card-body ">
-                    <div class="border border-primary">
-                        <div class="row">
-                            <div class="col-6 border border-primary">
-                                <h2>Image</h2>
+                    <div class="">
+                        <div class="row ">
+                            <div class="col-12 col-xl-6 col-sm-12  ">
+                                <img class="card-img-top" [src]="sanitizeImageUrl(plan.code)" alt="Card image cap"
+                                    style="height:250px">
                             </div>
-                            <div class="col-6 border border-primary">
-                                <h2 class="card-title text-center" style="font-size: 30px;">{{plan.client_product}}</h2>
+                            <div class="col-12 col-xl-6 col-sm-12 ">
+                                <h2 class="card-title text-center" style="font-size: 20px;">{{plan.client_product_name}}</h2>
+                                <h2 class="card-title text-center" style="font-size: 18px;">{{plan.client_project_name}}</h2>
+                                <h3 class="ml-2 " style="font-size: 18px; font-family: 'Prompt', sans-serif;
 
-                                <h3 class="ml-2 text-center" style="font-size: 25px;">{{plan.client_product_info}}</h3>
+
+                                 
+                                ">{{plan.client_product_info}}</h3>
+
                             </div>
                         </div>
                         <div class="row">
@@ -49,7 +67,7 @@
                                     class="btn btn-primary">Edit</a>
                             </div>
                             <div class="col-6 mt-3 mb-3 text-center">
-                                <a href="javascript:void(0)" (click)="deleteClientProduct($event)"
+                                <a href="javascript:void(0)" (click)="deleteClientProducts(plan)"
                                     class="btn btn-primary">Delete</a>
                             </div>
                         </div>
@@ -57,8 +75,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-1 "></div>
+
     </div>
+    <div class="row " style="height: 80px;"></div>
+
 </div>
+
 
 <div class="">
     <app-footer></app-footer>

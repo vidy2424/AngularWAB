@@ -14,28 +14,35 @@ getForm(config?: any): any {
   return {
     components: [
       {
-          label: 'Our Product',
+          label: 'Client Product Name',
           tableView: true,
-          key: 'client_product',
+          key: 'client_product_name',
           type: 'textfield',
           input: true
       },
       {
-          label: 'Text Area',
+        label: 'Client_Project_Name',
+        tableView: true,
+        key: 'client_project_name',
+        type: 'textfield',
+        input: true
+    },
+      {
+          label: 'Client Product Info',
           autoExpand: false,
           tableView: true,
           key: 'client_product_info',
           type: 'textarea',
           input: true
       },
-      {
-          type: 'button',
-          label: 'Submit',
-          key: 'submit',
-          disableOnInvalid: true,
-          input: true,
-          tableView: false
-      }
+      // {
+      //     type: 'button',
+      //     label: 'Submit',
+      //     key: 'submit',
+      //     disableOnInvalid: true,
+      //     input: true,
+      //     tableView: false
+      // }
   ]    }
 }
 
@@ -44,24 +51,24 @@ validateForm(submission: any, callback: any): void {
   callback(null, submission);
 }
 
-submitForm(submission: any): void {
-  console.log(submission);
-  if (this.data && this.data['id']) {
-    this.clientProductsServiceService.editClientProducts(submission, this.data['id'])
-    .subscribe(result => {
-        console.log(result);
-    }, err => {
-        alert(err);
-    });
-  } else {
-    this.clientProductsServiceService.ClientProducts(submission)
-    .subscribe(result => {
-        console.log(result);
-    }, err => {
-        alert(err);
-    });
-  }
-}
+// submitForm(submission: any): void {
+//   console.log(submission);
+//   if (this.data && this.data['id']) {
+//     this.clientProductsServiceService.editClientProducts(submission, this.data['id'])
+//     .subscribe(result => {
+//         console.log(result);
+//     }, err => {
+//         alert(err);
+//     });
+//   } else {
+//     this.clientProductsServiceService.ClientProducts(submission)
+//     .subscribe(result => {
+//         console.log(result);
+//     }, err => {
+//         alert(err);
+//     });
+//   }
+// }
 
 cleanup(): void {
   throw new Error('Method not implemented.');

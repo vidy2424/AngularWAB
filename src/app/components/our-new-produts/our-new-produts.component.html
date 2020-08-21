@@ -5,8 +5,8 @@
     <app-navbar></app-navbar>
 </div>
 
-<div class="container-fluid border border-primary">
-    <div class="text-center mt-3">
+<div class="container-fluid ">
+    <div *ngIf='isAdmin' class="text-center mt-3">
         <button type="button" class="btn btn-primary text-center;" (click)="addOurProducts()">Create</button>
     </div>
     <br>
@@ -37,18 +37,21 @@
           <!-- [disabled]="!submissionData" -->
     </ng-template>
 
-    <div class="row border border-primary">
-        <div class="col-12 border border-primary" *ngFor="let plan of productInfo; let index=index">
+    <div class="row "  *ngFor="let plan of productInfo; let index=index">
+
+        <div class="col-xl-1 "></div>
+
+        <div class="col-xl-10 ">
             <div class="card" style="margin-top: 50px;  ">
 
                 <div class="card-body ">
-                    <div class="border border-primary">
+                    <div class="">
                         <div class="row">
-                            <div class="col-6 border border-primary ">
+                            <div class="col-12 col-xl-6 col-sm-12  ">
                                 <img class="card-img-top" [src]="sanitizeImageUrl(plan.code)" alt="Card image cap"
-                                    style="height:300px">
+                                    style="height:250px">
                             </div>
-                            <div class="col-6 border border-primary">
+                            <div class="col-12 col-xl-6 col-sm-12 ">
                                 <h2 class="card-title text-center" style="font-size: 30px;">{{plan.product_name}}</h2>
 
                                 <h3 class="ml-2 text-center" style="font-size: 25px;">{{plan.product_info}}</h3>
@@ -56,11 +59,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 mt-3 mb-3 text-center">
+                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="editOurProducts(plan)"
                                     class="btn btn-primary">Edit</a>
                             </div>
-                            <div class="col-6 mt-3 mb-3 text-center">
+                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="deleteOurProducts(plan)"
                                     class="btn btn-primary">Delete</a>
                             </div>
@@ -69,10 +72,11 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-xl-1 "></div>
+     </div>
+    <div class="row" style="height: 80px;"></div>
 </div>
-
-
+ 
 <div class="">
     <app-footer></app-footer>
 </div>

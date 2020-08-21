@@ -57,7 +57,7 @@ export class OurProductsComponent implements OnInit {
 
     ngOnInit() {
         this.getOurProducts();
-        this.fileInfos = this.ourProductsServiceService.getFiles();
+ 
     }
 
     getPath(plan): string {

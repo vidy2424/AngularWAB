@@ -15,19 +15,21 @@ export class OurProductsService {
  
       components: [
         {
-            label: 'Text Field',
+            label: 'Product Name',
             tableView: true,
             key: 'product_name',
             type: 'textfield',
             input: true
         },
         {
-          label: 'Text Field',
+           label : 'Product Info',
+          autoExpand: false,
           tableView: true,
           key: 'product_info',
-          type: 'textfield',
+          type: 'textarea',
           input: true
-        },
+      }
+ 
         // {
         //     "type": "button",
         //     "label": "Submit",
