@@ -9,6 +9,7 @@ import { HelperService } from 'src/app/Helper/helper.service';
 import * as _ from 'lodash';
 import { LoginService } from 'src/app/sevices/login.service';
 import { Observable } from 'rxjs';
+import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-our-new-produts',
@@ -70,7 +71,7 @@ export class OurNewProdutsComponent implements OnInit {
     this.isAdmin = this.helperService.userData['role'] === 'ADMIN' ? true : false;
     this.getOurProducts();
     // this.isAdmin = this.userinfo['role'] === 'ADMIN' ? true : false;
-    //this.userinfo();
+    this.userinfo(tokenName);
   }
 
   getPath(plan): string {

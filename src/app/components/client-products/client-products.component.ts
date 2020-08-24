@@ -10,6 +10,7 @@ import { OurProductsService } from 'src/app/formio.service.ts/our-products.servi
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HelperService } from 'src/app/Helper/helper.service';
 import { LoginService } from 'src/app/sevices/login.service';
+import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-client-products',
@@ -72,7 +73,7 @@ export class ClientProductsComponent implements OnInit {
     this.isAdmin = this.helperService.userData['role'] === 'ADMIN' ? true : false;
     this.getClientProducts();
     // this.isAdmin = this.userinfo['role'] === 'ADMIN' ? true : false;
-    //this.userinfo();
+    this.userinfo(tokenName);
   }
 
   getPath(plan): string {
@@ -169,7 +170,7 @@ deleteClientProducts(item: any): void {
         selectedItem: item
     };
     this.openModalWithClass(this._template, item);
-    this.formName = `Edit Plan: ${item.product_info}`;
+    this.formName = `Edit Plan: ${item.client_product_name}`;
 }
 
   addPlan(): void {

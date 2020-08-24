@@ -6,7 +6,7 @@
 </div>
 
 <div class="container-fluid ">
-    <div class="text-center mt-3">
+    <div *ngIf='isAdmin' class="text-center mt-3">
         <button type="button" class="btn btn-primary text-center;" (click)="addClientProducts()">Create</button>
     </div>
     <br>
@@ -51,8 +51,8 @@
                                     style="height:250px">
                             </div>
                             <div class="col-12 col-xl-6 col-sm-12 ">
-                                <h2 class="card-title text-center" style="font-size: 20px;">{{plan.client_product_name}}</h2>
-                                <h2 class="card-title text-center" style="font-size: 18px;">{{plan.client_project_name}}</h2>
+                                <h2 class="card-title text-center mt-3" style="font-size: 20px; text-transform: uppercase;">{{plan.client_product_name}}</h2>
+                                <h2 class="card-title ml-2" style="font-size: 18px;">Project: {{plan.client_project_name}}</h2>
                                 <h3 class="ml-2 " style="font-size: 18px; font-family: 'Prompt', sans-serif;
 
 
@@ -62,11 +62,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 mt-3 mb-3 text-center">
+                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="editClientProducts(plan)"
                                     class="btn btn-primary">Edit</a>
                             </div>
-                            <div class="col-6 mt-3 mb-3 text-center">
+                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="deleteClientProducts(plan)"
                                     class="btn btn-primary">Delete</a>
                             </div>
