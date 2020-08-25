@@ -41,7 +41,7 @@
 
         <div class="col-xl-1 "></div>
         <div class="col-xl-10 " >
-            <div class="card" style="margin-top: 50px;  ">
+            <div class="card" style="margin-top: 50px; background-color: #6b686bfa; border-radius: 20px; ">
 
                 <div class="card-body ">
                     <div class="">
@@ -51,9 +51,10 @@
                                     style="height:250px">
                             </div>
                             <div class="col-12 col-xl-6 col-sm-12 ">
-                                <h2 class="card-title text-center mt-3" style="font-size: 20px; text-transform: uppercase;">{{plan.client_product_name}}</h2>
-                                <h2 class="card-title ml-2" style="font-size: 18px;">Project: {{plan.client_project_name}}</h2>
-                                <h3 class="ml-2 " style="font-size: 18px; font-family: 'Prompt', sans-serif;
+                                <h2 class="card-title text-center mt-3" style="font-size: 20px; text-transform: uppercase; color:white;">
+                                    {{plan.client_product_name}}</h2>
+                                <h2 class="card-title ml-2" style="font-size: 18px;color:  white;">Project: {{plan.client_project_name}}</h2>
+                                <h3 class="ml-2 " style="font-size: 18px; color: white; font-family: 'Prompt', sans-serif;
 
 
                                  
@@ -64,11 +65,11 @@
                         <div class="row">
                             <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="editClientProducts(plan)"
-                                    class="btn btn-primary">Edit</a>
+                                    class="btn btn-outline-primary" style="color: white; ">Edit</a>
                             </div>
                             <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
                                 <a href="javascript:void(0)" (click)="deleteClientProducts(plan)"
-                                    class="btn btn-primary">Delete</a>
+                                    class="btn btn-outline-primary" style="color: white;">Delete</a>
                             </div>
                         </div>
                     </div>

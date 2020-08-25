@@ -109,7 +109,7 @@ addTeamMembers(): void {
         this.isAdmin = result['role'] === 'ADMIN' ? true : false;
 
       }, err => {
-        alert(err);
+        //alert(err);
       });
   }
 
