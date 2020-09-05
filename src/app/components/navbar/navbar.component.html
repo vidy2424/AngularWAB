@@ -1,9 +1,10 @@
- 
+
+
 <div class="container-fluid p-0">
    <div class="container-fluid p-0">
   
   <div class="d-none d-xl-block p-0">
-<nav class="no-gutters navbar navbar-expand-lg navbar-dark " style="background-color: #046ebf;">
+<nav class="no-gutters navbar navbar-expand-md navbar-dark " style="background-color: #046ebf; ">
   <a class="navbar-brand" href="#" style="font-family: 'Prompt', sans-serif;">WAB It Software Pvt.ltd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,7 +105,7 @@
       <li *ngIf='isLoggedin' class="nav-item text-center butn" >
         <h1 class="fontsize" style="color: white;">Welcome!!<br><br> {{loginUserInfo.fullname}}</h1>
         <a href="javascript:void(0)" class="nav-link ml-auto fontsize" (click)="logOut()"><i class="fa fa-sign-out" 
-        style="font-size: 30px; color: white;" aria-hidden="tue"></i>
+        style="font-size: 30px; color: white;" title="Logout" aria-hidden="tue"></i>
          </a>
       </li>
     </div>
@@ -207,7 +208,7 @@
       </li>
       <li  *ngIf='isLoggedin' class="nav-item mt-2 ml-2">
         <a href="javascript:void(0)" class="nav-link fontsize" (click)="logOut()">
-          <i class="fa fa-sign-out" style="font-size:30px ;" aria-hidden="true"></i>
+          <i class="fa fa-sign-out" title="Logout" style="font-size:30px ;" aria-hidden="true"></i>
         </a>
       </li>
       <li  *ngIf='!isLoggedin' class="nav-item mt-2 ml-2">

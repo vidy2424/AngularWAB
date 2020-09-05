@@ -82,7 +82,7 @@ export class CardComponent implements OnInit {
         this.isAdmin = result['role'] === 'ADMIN' ? true : false;
 
       }, err => {
-        alert(err);
+        // alert(err);
       });
   }
   

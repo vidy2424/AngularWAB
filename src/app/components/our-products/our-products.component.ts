@@ -56,7 +56,7 @@ export class OurProductsComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.getOurProducts();
+        // this.getOurProducts();
  
     }
 
@@ -92,15 +92,15 @@ export class OurProductsComponent implements OnInit {
 
 
 
-    getOurProducts(): void {
-        this.ourProductsServiceService.getOurProducts()
-            .subscribe(result => {
-                console.log(result);
-                this.productInfo = result;
-            }, err => {
-                alert(err);
-            })
-    }
+    // getOurProducts(): void {
+    //     this.ourProductsServiceService.getOurProducts()
+    //         .subscribe(result => {
+    //             console.log(result);
+    //             this.productInfo = result;
+    //         }, err => {
+    //             alert(err);
+    //         })
+    // }
 
 
     openModalWithClass(template: TemplateRef<any>, item?: any) {

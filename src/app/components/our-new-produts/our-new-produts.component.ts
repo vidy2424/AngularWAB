@@ -43,6 +43,13 @@ export class OurNewProdutsComponent implements OnInit {
   message = '';
   path = '/assets/image/';
   fileInfos: Observable<any>;
+  pagination = {
+    page: 1,
+    total: 0,
+    pageSize: 5,
+    previousPage: 1
+  };
+
   constructor(
 
     private ourProductsService: OurProductsService,
@@ -59,40 +66,34 @@ export class OurNewProdutsComponent implements OnInit {
     noAlerts: true
   };
 
-  onSignUpFormChange(): void {
-
-  }
-
-  onFormLoad(): void {
-
-  }
-
   ngOnInit() {
     this.isAdmin = this.helperService.userData['role'] === 'ADMIN' ? true : false;
-    this.getOurProducts();
-    // this.isAdmin = this.userinfo['role'] === 'ADMIN' ? true : false;
+    this.getOurProducts(1);
     this.userinfo(tokenName);
   }
 
   getPath(plan): string {
     const path = this.path + `${plan.code}`;
     return path;
-}
+  }
 
-sanitizeImageUrl(imageName: string): SafeUrl {
-  const imageUrl = this.path + imageName + '.jpg';
-  return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-}
+  sanitizeImageUrl(imageName: string): SafeUrl {
+    const imageUrl = this.path + imageName + '.jpg';
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
 
-getOurProducts(): void {
-  this.ourProductsServiceService.getOurProducts()
+  getOurProducts(page: any ): void {
+    this.ourProductsServiceService.getOurProducts(page)
       .subscribe(result => {
-          console.log(result);
-          this.productInfo = result;
+        console.log(result);
+        this.productInfo = result[0];
+        this.pagination.total =  result[1] && result[1] % this.pagination.pageSize === 0 ?
+                                Math.floor(result[1] / this.pagination.pageSize) :
+                                Math.floor(result[1] / this.pagination.pageSize) + 1;
       }, err => {
-          alert(err);
-      })
-}
+        alert(err);
+      });
+  }
 
   addOurProducts(): void {
     this.configData = {
@@ -108,7 +109,7 @@ getOurProducts(): void {
         this.isAdmin = result['role'] === 'ADMIN' ? true : false;
 
       }, err => {
-        alert(err);
+        // alert(err);
       });
   }
 
@@ -126,31 +127,32 @@ getOurProducts(): void {
     this.selectedFile = event.target.files[0];
   }
 
- 
+
 
   upload(): void {
     const data = this.formIo.submission.data;
     this.submissionData['data'] = data;
     this.submissionData['files'] = this.selectedFile;
     if (data && data['id']) {
-      this.ourProductsServiceService.editOurProducts(this.submissionData['data'],this.submissionData['files'], this.submissionData['data']['id'])
+      // tslint:disable-next-line: max-line-length
+      this.ourProductsServiceService.editOurProducts(this.submissionData['data'], this.submissionData['files'], this.submissionData['data']['id'])
         .subscribe(result => {
           console.log(result);
         }, err => {
           alert(err);
         });
-    }else{
-    this.ourProductsServiceService.upload(this.submissionData)
-       .subscribe(event => {
+    } else {
+      this.ourProductsServiceService.upload(this.submissionData)
+        .subscribe(event => {
 
-      },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not upload the file!';
-          this.currentFile = undefined;
-        });
+        },
+          err => {
+            this.progress = 0;
+            this.message = 'Could not upload the file!';
+            this.currentFile = undefined;
+          });
+    }
   }
-}
 
   deleteOurProducts(item: any): void {
     this.ourProductsServiceService.deleteOurProducts(item.id)
@@ -160,16 +162,16 @@ getOurProducts(): void {
         alert(err);
       });
   }
- 
+
 
   editOurProducts(item: any): void {
     this.configData = {
-        formName: this.formName,
-        selectedItem: item
+      formName: this.formName,
+      selectedItem: item
     };
     this.openModalWithClass(this._template, item);
     this.formName = `Edit Plan: ${item.product_info}`;
-}
+  }
 
   addPlan(): void {
     this.configData = {
@@ -187,11 +189,48 @@ getOurProducts(): void {
     this.formIo.form = this.ourProductsService.getForm();
   }
 
-  // submitForm(event: any): void {
-  //   console.log(event);
-  //   this.ourProductsService.submitForm(event.data, () => {
-  //     this.modalRef.hide();
-  //   });
-  // }
+
+  setPreviousAndNextPage(pagetype: any): void {
+    if(pagetype === 'Previous') {
+      this.getOurProducts(this.pagination.page - 1);
+      this.pagination.page = this.pagination.page - 1;
+    } else if (pagetype === 'Next') {
+      this.getOurProducts(this.pagination.page + 1);
+      this.pagination.page = this.pagination.page + 1;
+    } 
+    this.removeActivePage(this.pagination.previousPage);
+    this.setActivePage(this.pagination.page);
+    this.pagination.previousPage = this.pagination.page;
+  }
+
+  counter(i: number) {
+    const arr = [];
+    for (let index = 0; index < i; index++) {
+      arr.push(index + 1);
+    }
+    return arr;
+  }
+
+  changePage(page: number): void {
+    this.pagination.page = page;
+    this.getOurProducts(page);
+    this.removeActivePage(this.pagination.previousPage);
+    this.setActivePage(page);
+    this.pagination.previousPage = page;
+  }
+
+  setActivePage(page: number): void {
+    const element = document.getElementById(this.getId(page));
+    element.className = 'page-item active';
+  }
+
+  removeActivePage(page: number): void {
+    const element = document.getElementById(this.getId(page));
+    element.className = 'page-item';
+  }
+
+  getId(page: any): string {
+    return 'page_' + page;
+  }
 
 }

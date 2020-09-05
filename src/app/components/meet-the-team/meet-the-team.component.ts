@@ -169,7 +169,7 @@ addTeamMembers(): void {
         selectedItem: item
     };
     this.openModalWithClass(this._template, item);
-    this.formName = `Edit Plan: ${item.product_info}`;
+    this.formName = `Edit Plan: ${item.member_name}`;
 }
 
   addPlan(): void {

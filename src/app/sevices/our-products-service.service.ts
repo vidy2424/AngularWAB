@@ -35,8 +35,13 @@ export class OurProductsServiceService {
     }
 
 
-    getOurProducts(): Observable<any> {
-        const url = '/ourProducts/info';
+    // getOurProducts(): Observable<any> {
+    //     const url = '/ourProducts/info';
+    //     return this.httpClient.get(this.serverUrl + url);
+    // }
+
+    getOurProducts(start: any): Observable<any> {
+        const url = `/ourProducts/info/${start}`;
         return this.httpClient.get(this.serverUrl + url);
     }
     deleteOurProducts(id: any): Observable<any> {

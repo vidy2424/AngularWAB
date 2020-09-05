@@ -15,14 +15,14 @@ export class MeetTheTeamForm {
  
       components: [
         {
-            label: 'Text Field',
+            label: 'member_name',
             tableView: true,
             key: 'member_name',
             type: 'textfield',
             input: true
         },
         {
-          label: 'Text Field',
+          label: 'profile_name',
           tableView: true,
           key: 'profile_name',
           type: 'textfield',

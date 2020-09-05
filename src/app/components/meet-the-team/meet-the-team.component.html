@@ -37,14 +37,14 @@
           <!-- [disabled]="!submissionData" -->
     </ng-template>
 
-    <h1 class="text-center"><u>Meet The Team</u></h1>
+    <h1 class="text-center" style="margin-top: 100px;"><u>Meet The Team</u></h1>
     
     <div class="row " style=" ">
         <div class="col-xl-1 col-12  "></div>
         <div class="col-xl-10  ">
             <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6  col-xl-3 " *ngFor="let member of memberInfo; let index=index">
-            <div class="card small" style="margin-top: 50px; background-color: #03b5fc; border-radius: 11px;">
+            <div class="card small" style="margin-top: 50px; background-color: #03b5fc; height: 500px; border-radius: 11px;">
                 <div class="card-body ">
                     <div class="">
                          <div style="padding-top: 0px;">
@@ -65,14 +65,14 @@
                         <div class="" style="margin-top: 16px;">
                             <h1 class="ml-2 mt-2 mb-2 text-center" style="font-size: 20px; color: white;">{{member.profile_name}}</h1>
                         </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div *ngIf='isAdmin'  class="col-6 mt-3 mb-3 text-center">
-                                <a href="javascript:void(0)" (click)="editPlan(plan)" class="btn btn-primary"
+                        <div class="row" style="">
+                            <div *ngIf='isAdmin'  class="col-6  mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="editTeamMembers(member)" class="btn btn-primary"
                                     style="width: 90px;">
                                     Edit</a>
                             </div>
-                            <div *ngIf='isAdmin' class="col-6 mt-3 mb-3 text-center">
-                                <a href="javascript:void(0)" (click)="deletePlan(plan)" class="btn btn-primary"
+                            <div *ngIf='isAdmin' class="col-6   mb-3 text-center">
+                                <a href="javascript:void(0)" (click)="deleteTeamMembers(member)" class="btn btn-primary"
                                     style="width: 90px;">Delete</a>
                             </div>
 
