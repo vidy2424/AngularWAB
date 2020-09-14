@@ -12,6 +12,7 @@ textarea:focus, input:focus{
     padding-bottom:56.25%;
     position:relative;
     height:0;
+    border-radius: 20px;
 }
 .map-responsive iframe{
     left:0;
@@ -19,4 +20,11 @@ textarea:focus, input:focus{
     height:80%;
     width:100%;
     position:absolute;
+    border-radius: 20px;
 }
+
+
+.card {
+	box-shadow: 0 4px 8px 0 #949190;
+	transition: 0.3s;
+  }

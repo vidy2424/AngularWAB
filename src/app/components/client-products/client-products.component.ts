@@ -11,6 +11,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HelperService } from 'src/app/Helper/helper.service';
 import { LoginService } from 'src/app/sevices/login.service';
 import { tokenName } from '@angular/compiler';
+import { AlertService } from 'src/app/Helper/alert.service';
 
 @Component({
   selector: 'app-client-products',
@@ -45,6 +46,14 @@ export class ClientProductsComponent implements OnInit {
   message = '';
   path = '/assets/image/';
   fileInfos: Observable<any>;
+  pagination = {
+    page: 1,
+    total: 0,
+    pageSize: 5,
+    previousPage: 1
+  };
+
+
   constructor(
 
     private clientProductsService: ClientProductsService,
@@ -52,6 +61,7 @@ export class ClientProductsComponent implements OnInit {
     private modalService: BsModalService,
     private sanitizer: DomSanitizer,
     private helperService: HelperService,
+    private alertService: AlertService,
     private loginService: LoginService
   ) { }
 
@@ -71,7 +81,7 @@ export class ClientProductsComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = this.helperService.userData['role'] === 'ADMIN' ? true : false;
-    this.getClientProducts();
+    this.getClientProducts(1);
     // this.isAdmin = this.userinfo['role'] === 'ADMIN' ? true : false;
     this.userinfo(tokenName);
   }
@@ -79,22 +89,27 @@ export class ClientProductsComponent implements OnInit {
   getPath(plan): string {
     const path = this.path + `${plan.code}`;
     return path;
-}
+  }
 
-sanitizeImageUrl(imageName: string): SafeUrl {
-  const imageUrl = this.path + imageName + '.jpg';
-  return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-}
+  sanitizeImageUrl(imageName: string): SafeUrl {
+    const imageUrl = this.path + imageName + '.jpg';
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
 
-getClientProducts(): void {
-  this.clientProductsServiceService.getClientProducts()
+  getClientProducts(page: any): void {
+    this.clientProductsServiceService.getClientProducts(page)
       .subscribe(result => {
-          console.log(result);
-          this.productInfo = result;
+        console.log(result);
+        this.productInfo = result[0];
+
+        this.pagination.total = result[1] && result[1] % this.pagination.pageSize === 0 ?
+          Math.floor(result[1] / this.pagination.pageSize) :
+          Math.floor(result[1] / this.pagination.pageSize) + 1;
+
       }, err => {
-          alert(err);
+        alert(err);
       })
-}
+  }
 
   addClientProducts(): void {
     this.configData = {
@@ -128,50 +143,56 @@ getClientProducts(): void {
     this.selectedFile = event.target.files[0];
   }
 
- 
+
 
   upload(): void {
     const data = this.formIo.submission.data;
     this.submissionData['data'] = data;
     this.submissionData['files'] = this.selectedFile;
     if (data && data['id']) {
-      this.clientProductsServiceService.editClientProducts(this.submissionData['data'],this.submissionData['files'], this.submissionData['data']['id'])
+      // tslint:disable-next-line: max-line-length
+      this.clientProductsServiceService.editClientProducts(this.submissionData['data'], this.submissionData['files'], this.submissionData['data']['id'])
         .subscribe(result => {
           console.log(result);
         }, err => {
           alert(err);
         });
-    }else{
-    this.clientProductsServiceService.upload(this.submissionData)
-       .subscribe(event => {
+    } else {
+      this.clientProductsServiceService.upload(this.submissionData)
+        .subscribe(event => {
 
-      },
-        err => {
-          this.progress = 0;
-          this.message = 'Could not upload the file!';
-          this.currentFile = undefined;
-        });
+        },
+          err => {
+            this.progress = 0;
+            this.message = 'Could not upload the file!';
+            this.currentFile = undefined;
+          });
+    }
   }
-}
 
-deleteClientProducts(item: any): void {
-    this.clientProductsServiceService.deleteClientProducts(item.id)
-      .subscribe(result => {
-        console.log(result);
-      }, err => {
-        alert(err);
-      });
+  deleteClientProducts(item: any): void {
+    this.alertService.showInfo('Confirm submit', 'Do you want to delete?', result => {
+      if (result) {
+        this.clientProductsServiceService.deleteClientProducts(item.id)
+          .subscribe(result => {
+            console.log(result);
+            this.getClientProducts(1);
+          }, err => {
+            alert(err);
+          });
+      }
+    });
   }
- 
+
 
   editClientProducts(item: any): void {
     this.configData = {
-        formName: this.formName,
-        selectedItem: item
+      formName: this.formName,
+      selectedItem: item
     };
     this.openModalWithClass(this._template, item);
     this.formName = `Edit Plan: ${item.client_product_name}`;
-}
+  }
 
   addPlan(): void {
     this.configData = {
@@ -195,5 +216,51 @@ deleteClientProducts(item: any): void {
   //     this.modalRef.hide();
   //   });
   // }
+
+  setPreviousAndNextPage(pagetype: any): void {
+    if (pagetype === 'Previous') {
+      this.getClientProducts(this.pagination.page - 1);
+      this.pagination.page = this.pagination.page - 1;
+    } else if (pagetype === 'Next') {
+      this.getClientProducts(this.pagination.page + 1);
+      this.pagination.page = this.pagination.page + 1;
+    }
+    this.removeActivePage(this.pagination.previousPage);
+    this.setActivePage(this.pagination.page);
+    this.pagination.previousPage = this.pagination.page;
+  }
+
+  counter(i: number) {
+    const arr = [];
+    for (let index = 0; index < i; index++) {
+      arr.push(index + 1);
+    }
+    return arr;
+  }
+
+  changePage(page: number): void {
+    this.pagination.page = page;
+    this.getClientProducts(page);
+    this.removeActivePage(this.pagination.previousPage);
+    this.setActivePage(page);
+    this.pagination.previousPage = page;
+  }
+
+  setActivePage(page: number): void {
+    const element = document.getElementById(this.getId(page));
+    element.className = 'page-item active';
+  }
+
+  removeActivePage(page: number): void {
+    const element = document.getElementById(this.getId(page));
+    element.className = 'page-item';
+  }
+
+  getId(page: any): string {
+    return 'page_' + page;
+  }
+
+
+
 
 }

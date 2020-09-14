@@ -5,7 +5,9 @@
     <app-navbar></app-navbar>
 </div>
 
-<div class="container-fluid border border-primary">
+<div class="container-fluid">
+    <div class="card" style="margin-top: 20px; background-color: white;  border-radius: 20px;">
+        <div class="card-body">
     <div *ngIf='isAdmin' class="text-center mt-3">
         <button type="button" class="btn btn-primary text-center;" (click)="addTeamMembers()">Create</button>
     </div>
@@ -21,8 +23,7 @@
         <div class="modal-body col-12" style="">
             <div>
                 <formio #notificationForm [form]="formIo.form" [submission]="formIo.submission"
-                    [options]="formIoOptions" (change)="onSignUpFormChange($event)"
-                    (render)="onFormLoad(notificationForm)" (submit)="submitForm($event)">
+                    [options]="formIoOptions">
                 </formio>
                 <label class="btn btn-default">
                     <input type="file" (change)="selectFile($event)" />
@@ -37,14 +38,15 @@
           <!-- [disabled]="!submissionData" -->
     </ng-template>
 
-    <h1 class="text-center" style="margin-top: 100px;"><u>Meet The Team</u></h1>
+    <h1 class="text-center" style="margin-top: 20px;">Meet The Team</h1>
     
     <div class="row " style=" ">
+
         <div class="col-xl-1 col-12  "></div>
-        <div class="col-xl-10  ">
+        <div class="col-xl-10">
             <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6  col-xl-3 " *ngFor="let member of memberInfo; let index=index">
-            <div class="card small" style="margin-top: 50px; background-color: #03b5fc; height: 500px; border-radius: 11px;">
+            <div class="card cardshadow small" style="margin-top: 50px; background-color: #6b686bfa; height: 500px; border-radius: 11px;">
                 <div class="card-body ">
                     <div class="">
                          <div style="padding-top: 0px;">
@@ -56,7 +58,7 @@
                         </div>
 
                         <!-- #001c82 -->
-                        <div class="" style="padding-top: 0px; overflow: auto; ">
+                        <div class="" style="padding-top: 0px;">
                             <div class="mt-4" >
                                 <h3 class="ml-2 text-center" style="font-size: 25px; color: white;"> {{member.member_name}}</h3>
                             </div>
@@ -120,9 +122,11 @@
             </div>
         </div>
     </div> -->
-    <div class="row" style="height: 80px;"></div>
+        </div></div>
 
-</div>
+        <div class="row" style="height: 80px;"></div>
+
+    </div>
 
 <div class="">
     <app-footer></app-footer>

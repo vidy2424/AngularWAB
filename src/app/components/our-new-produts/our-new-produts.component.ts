@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 import { LoginService } from 'src/app/sevices/login.service';
 import { Observable } from 'rxjs';
 import { tokenName } from '@angular/compiler';
+import { AlertService } from 'src/app/Helper/alert.service';
 
 @Component({
   selector: 'app-our-new-produts',
@@ -57,6 +58,7 @@ export class OurNewProdutsComponent implements OnInit {
     private modalService: BsModalService,
     private sanitizer: DomSanitizer,
     private helperService: HelperService,
+    private alertService: AlertService,
     private loginService: LoginService
   ) { }
 
@@ -82,14 +84,14 @@ export class OurNewProdutsComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 
-  getOurProducts(page: any ): void {
+  getOurProducts(page: any): void {
     this.ourProductsServiceService.getOurProducts(page)
       .subscribe(result => {
         console.log(result);
         this.productInfo = result[0];
-        this.pagination.total =  result[1] && result[1] % this.pagination.pageSize === 0 ?
-                                Math.floor(result[1] / this.pagination.pageSize) :
-                                Math.floor(result[1] / this.pagination.pageSize) + 1;
+        this.pagination.total = result[1] && result[1] % this.pagination.pageSize === 0 ?
+          Math.floor(result[1] / this.pagination.pageSize) :
+          Math.floor(result[1] / this.pagination.pageSize) + 1;
       }, err => {
         alert(err);
       });
@@ -154,13 +156,20 @@ export class OurNewProdutsComponent implements OnInit {
     }
   }
 
+
+
   deleteOurProducts(item: any): void {
-    this.ourProductsServiceService.deleteOurProducts(item.id)
-      .subscribe(result => {
-        console.log(result);
-      }, err => {
-        alert(err);
-      });
+    this.alertService.showInfo('Confirm submit', 'Do you want to delete?', result => {
+      if (result) {
+        this.ourProductsServiceService.deleteOurProducts(item.id)
+          .subscribe(result => {
+            this.getOurProducts(1);
+            console.log(result);
+          }, err => {
+            alert(err);
+          });
+      }
+    });
   }
 
 
@@ -191,13 +200,13 @@ export class OurNewProdutsComponent implements OnInit {
 
 
   setPreviousAndNextPage(pagetype: any): void {
-    if(pagetype === 'Previous') {
+    if (pagetype === 'Previous') {
       this.getOurProducts(this.pagination.page - 1);
       this.pagination.page = this.pagination.page - 1;
     } else if (pagetype === 'Next') {
       this.getOurProducts(this.pagination.page + 1);
       this.pagination.page = this.pagination.page + 1;
-    } 
+    }
     this.removeActivePage(this.pagination.previousPage);
     this.setActivePage(this.pagination.page);
     this.pagination.previousPage = this.pagination.page;

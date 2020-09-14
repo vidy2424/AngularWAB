@@ -37,7 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  import { OurNewProdutsComponent } from './components/our-new-produts/our-new-produts.component';
 import { MeetTheTeamComponent } from './components/meet-the-team/meet-the-team.component';
 import { IsoInfoComponent } from './components/iso-info/iso-info.component';
- // import { initProviderFactory } from './sevices/init-app-provider.factory';
+import { AlertComponent } from './components/alert/alert.component';
+import { AlertService } from './Helper/alert.service';
+  // import { initProviderFactory } from './sevices/init-app-provider.factory';
 
 @NgModule({
   declarations: [
@@ -61,8 +63,9 @@ import { IsoInfoComponent } from './components/iso-info/iso-info.component';
     ContactComponent,
     OurNewProdutsComponent,
     MeetTheTeamComponent,
-    IsoInfoComponent
-  ],
+    AlertComponent,
+    IsoInfoComponent,
+   ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -76,6 +79,9 @@ import { IsoInfoComponent } from './components/iso-info/iso-info.component';
     BrowserAnimationsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
+  ],
+  entryComponents: [
+    AlertComponent
   ],
   providers: [WebService,
     HelperService,
@@ -92,6 +98,7 @@ import { IsoInfoComponent } from './components/iso-info/iso-info.component';
     // },
     LoginService,
     FormioAppConfig,
+    AlertService,
     LoginFormService,
   ],
   bootstrap: [AppComponent]

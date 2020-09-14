@@ -8,6 +8,26 @@
 	box-shadow: 0 18px 16px 0px #b09492;
   }
 
+  .bar{
+	max-height:200px; scrollbar-width: thin;
+  }
+
+  * {
+	scrollbar-width: thin;
+	scrollbar-color: #93d2f7 #9cedf8;
+  }
+  *::-webkit-scrollbar {
+	width: 6px;
+  }
+  *::-webkit-scrollbar-track {
+	background: #bddeee;
+  }
+  *::-webkit-scrollbar-thumb {
+	background-color: #43a0ec;
+	border-radius: 20px;
+	border: 3px solid #57abfa;
+  }
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
 		  .small{
@@ -63,33 +83,33 @@
  * Icon
  */
 
-.icon1{
+/* .icon1{
 	max-height:250px; 
-}
+} */
 
-.icon {
+/* .icon {
 	position: relative;
-	overflow: hidden;
+	overflow: hidden; */
 	/* width: 450px;
 	height: 450px;
 	display: inline-block; */
 	
 	/* margin: 10px 0 10px 8px; */
-	border-radius: 5px;
+	/* border-radius: 5px;
 	color: #fff;
-	text-decoration: none;
+	text-decoration: none; */
 	/* text-align: center; */
 	/* line-height: 50px;
 	font-size: 12px;
 	font-family: sans-serif; */
-  }
+  /* } */
   
    
   /**
    * The "shine" element
    */
   
-  .icon:after {
+  /* .icon:after {
 	
 	animation: shine 5s ease-in-out  infinite;
 	animation-fill-mode: forwards;  
@@ -111,14 +131,14 @@
 	  rgba(255, 255, 255, 0.5) 92%,
 	  rgba(255, 255, 255, 0.0) 100%
 	);
-   }
+   } */
   
   /* Hover state - trigger effect */
   
   
   /* Active state */
   
-  .icon:active:after {
+  /* .icon:active:after {
 	opacity: 0;
   }
   
@@ -137,7 +157,7 @@
 	  left: -30%;
 	  transition-property: left, top, opacity;
 	}
-  }
+  } */
 	  
 	   
 

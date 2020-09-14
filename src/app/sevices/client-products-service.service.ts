@@ -53,14 +53,13 @@ upload(data): Observable<HttpEvent<any>> {
 }
 
 
-  getClientProducts(): Observable<any> {
-    const url = '/clientProducts/products';
+  getClientProducts(start: any): Observable<any> {
+    const url = `/clientProducts/products/${start}`;
     return this.httpClient.get(this.serverUrl + url);
   }
 
-
   deleteClientProducts(id: any): Observable<any> {
-    const url = `/infoDeleteprod/${id}`;
+    const url = `/clientProducts/${id}`;
    
     return this.httpClient.delete(this.serverUrl + url, { responseType: 'text' as 'json' });
     //return this.httpClient.delete(this.serverUrl + url);

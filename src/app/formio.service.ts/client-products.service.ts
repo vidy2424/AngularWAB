@@ -18,14 +18,20 @@ getForm(config?: any): any {
           tableView: true,
           key: 'client_product_name',
           type: 'textfield',
-          input: true
+          input: true,
+          validate: {
+            required: true
+        },
       },
       {
         label: 'Client_Project_Name',
         tableView: true,
         key: 'client_project_name',
         type: 'textfield',
-        input: true
+        input: true,
+        validate: {
+          required: true
+      },
     },
       {
           label: 'Client Product Info',
@@ -33,7 +39,10 @@ getForm(config?: any): any {
           tableView: true,
           key: 'client_product_info',
           type: 'textarea',
-          input: true
+          input: true,
+          validate: {
+            required: true
+        },
       },
       // {
       //     type: 'button',

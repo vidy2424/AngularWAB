@@ -8,3 +8,35 @@ fa{
 }
 
 div { border-width: 2px; }
+
+.cardhover {
+	box-shadow: 0 4px 8px 0 #949190;
+	transition: 0.3s;
+  }
+.cardshadow{
+	box-shadow: 0 4px 8px 0 #949190;
+	transition: 0.3s;
+  }
+
+  /* #b09492 */
+  .cardhover:hover {
+	box-shadow: 0 18px 16px 0px #b09492;
+  }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+		  .small{
+
+			height: 1000px;
+		  }	
+	
+	
+	 }
+
+	 @media (max-width: 575.98px) { 
+		
+		.small{
+			height: 1000px;
+		}
+
+	  }

@@ -14,8 +14,7 @@
         <div class="modal-body col-12" style="">
             <div>
                 <formio #notificationForm [form]="formIo.form" [submission]="formIo.submission"
-                    [options]="formIoOptions" (change)="onSignUpFormChange($event)"
-                    (render)="onFormLoad(notificationForm)" (submit)="submitForm($event)"></formio>
+                    [options]="formIoOptions" (submit)="submitForm($event)"></formio>
             </div>
         </div>
     </ng-template>
@@ -23,7 +22,7 @@
     <!-- #28bdeb -->
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6  col-xl-4" *ngFor="let plan of planInfo; let index=index">
-            <div class="card small icon" style="margin-top: 30px; height:550px; background-color: #03b5fc; ">
+            <div class="card small " style="margin-top: 30px; height:450px; background-color: #03b5fc; ">
                 <div class="card-body">
                     <!-- 03b5fc -->
                     <div class="">
@@ -37,7 +36,7 @@
                         </div>
 
                         <!-- #001c82 -->
-                        <div class="icon1" style="padding-top: 0px; overflow: auto; ">
+                        <div class="bar" style="padding-top: 0px; overflow: auto;">
                             <div class="" *ngFor="let info of plan.info; let index=index">
                                 <h3 class="ml-2" style="font-size: 13px; color: white;"> - {{info.info}}</h3>
                             </div>
@@ -65,5 +64,13 @@
             </div>
         </div>
     </div>
+
+
     <div class="row" style="height: 80px;"></div>
+           
 </div>
+ <!-- sroll to top button -->
+ <!-- <div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <i class="fa fa-arrow-circle-up" (click)="scrollToTop()" style="font-size: 40px;color:dodgerblue ;"
+        aria-hidden="true"></i>
+</div> -->

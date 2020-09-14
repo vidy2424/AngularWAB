@@ -7,6 +7,7 @@ import { LoginFormService } from 'src/app/formio.service.ts/login-form.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 

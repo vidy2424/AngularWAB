@@ -12,12 +12,11 @@ import { tokenName } from '@angular/compiler';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  loginUserInfo = [];
+  loginUserInfo: any = [];
 
   constructor(
     private helperService: HelperService,
     private loginService: LoginService,
- 
     private router: Router
   ) { }
 
@@ -42,7 +41,7 @@ export class NavbarComponent implements OnInit {
     this.loginService.getuserInfo()
     .subscribe(result => {
         this.helperService.userData = result;
-        this. loginUserInfo = result;
+        this.loginUserInfo = result;
     }, err => {
         // alert(err);
     });

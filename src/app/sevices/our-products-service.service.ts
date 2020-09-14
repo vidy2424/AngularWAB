@@ -10,7 +10,8 @@ export class OurProductsServiceService {
 
     constructor(private httpClient: HttpClient) { }
 
-    serverUrl = 'http://localhost:8083/onlineshopping';
+   serverUrl = 'http://localhost:8083/onlineshopping';
+    // serverUrl = window["cfgApiBaseUrl"] + "/onlineshopping";
 
 
     OurProducts(data: Student): Observable<any> {
@@ -26,30 +27,20 @@ export class OurProductsServiceService {
         formData.append('file', file);
 
         const req = new HttpRequest('POST', `${this.serverUrl}/product`, formData, {
-         //   headers: headers.set('Content-Type', 'multipart/form-data'),
-            // reportProgress: true,
-            //  responseType: 'json'
-        });
+         });
 
         return this.httpClient.request(req);
     }
-
-
-    // getOurProducts(): Observable<any> {
-    //     const url = '/ourProducts/info';
-    //     return this.httpClient.get(this.serverUrl + url);
-    // }
+ 
 
     getOurProducts(start: any): Observable<any> {
-        const url = `/ourProducts/info/${start}`;
+        const url = `/ourProducts/products/${start}`;
         return this.httpClient.get(this.serverUrl + url);
     }
     deleteOurProducts(id: any): Observable<any> {
         const url = `/infoDeleteprod/${id}`;
-       
         return this.httpClient.delete(this.serverUrl + url, { responseType: 'text' as 'json' });
-        //return this.httpClient.delete(this.serverUrl + url);
-    }
+     }
 
 
 

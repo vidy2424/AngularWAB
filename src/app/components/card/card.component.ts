@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Input, HostListener } from '@angular/core';
 import * as _ from 'lodash';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormConfig } from 'src/interface/formio-config';
@@ -8,6 +8,7 @@ import { WebInfoService } from 'src/app/formio.service.ts/web-info.service';
 import { HelperService } from 'src/app/Helper/helper.service';
 import { tokenName } from '@angular/compiler';
 import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
+import { AlertService } from 'src/app/Helper/alert.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -33,12 +34,16 @@ export class CardComponent implements OnInit {
   planInfo = [];
   configData = {};
   formName = 'Create Plan';
+  windowScrolled: boolean;
+
   isAdmin = false;
   constructor(
     private loginService: LoginService,
     private webInfoService: WebInfoService,
     private modalService: BsModalService,
     private helperService: HelperService,
+    private alertService: AlertService
+
   ) { }
 
   formIoOptions = {
@@ -98,12 +103,17 @@ export class CardComponent implements OnInit {
 
 
   deletePlan(item: any): void {
+    this.alertService.showInfo('Confirm submit', 'Do you want to delete?', result => {
+      if (result) {
     this.loginService.deletePlan(item.id)
       .subscribe(result => {
         console.log(result);
+        this.getPlanInfo();
       }, err => {
         alert(err);
       });
+    }
+  });
   }
 
   editPlan(item: any): void {
@@ -122,6 +132,26 @@ export class CardComponent implements OnInit {
     this.openModalWithClass(this._template);
   }
 
+  // sroll button
+  @HostListener ("window:scroll", [])
+  onWindowScroll() {
+      if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+          this.windowScrolled = true;
+      } 
+     else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
+          this.windowScrolled = false;
+      }
+  }
+  scrollToTop() {
+      (function smoothscroll() {
+          var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          if (currentScroll > 0) {
+              window.requestAnimationFrame(smoothscroll);
+              window.scrollTo(0, currentScroll - (currentScroll / 8));
+          }
+      })();
+  }
+
   showLoginForm(item?: any): void {
     console.log(item);
     if (!_.isEmpty(item)) {
@@ -130,6 +160,9 @@ export class CardComponent implements OnInit {
     }
     this.formIo.form = this.webInfoService.getForm();
   }
+
+
+
 
   submitForm(event: any): void {
     console.log(event);
